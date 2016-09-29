@@ -7,13 +7,12 @@ function vervalores(){
 		for (i=0;i<frm.elements.length;i++)
 		{ sAux += "NOMBRE: " + frm.elements[i].name + " ";
 		sAux += "VALOR: " + frm.elements[i].value + "\n" ;
+		return true; //si los datos estan correctos
 		}
 		alert(sAux);
+		return false; //si los datos estan mal
 	}
 }
-</script>
-
-<script>
 function verificar(){
 nombre = document.getElementById("nombre").value;
 apellido = document.getElementById("apellido").value;
@@ -26,8 +25,6 @@ pass = document.getElementById("pass").value;
  var expReg3=/^([a-zA-Z]{1,})(([0-9]){3})@ikasle.ehu.(eus|es)$/;
  var expReg4=/^.{6,}$/; //pass: minimo 6 caracteres
 
-
- 
  if (expReg1.test(nombre)) {
   //Si el nombre es nulo
     alert('[ERROR] Rellena el campo nombre porfavor.');
@@ -103,7 +100,7 @@ pass = document.getElementById("pass").value;
     <section class="main" id="s1">
     
 	<div>
-	<form id='registro' name='registro' onSubmit='vervalores()'> <!-- llamamos a vervalores() e vervalores() llama a verificar()-->
+	<form id='registro' name='registro' action='Registrar.php' onSubmit='return vervalores()'> <!-- llamamos a vervalores() e vervalores() llama a verificar()-->
     <div>
         Nombre:<input type="text" name="nombre" id="nombre" />
     </div>
