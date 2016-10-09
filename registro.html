@@ -7,50 +7,45 @@ function vervalores(){
 		for (i=0;i<frm.elements.length;i++)
 		{ sAux += "NOMBRE: " + frm.elements[i].name + " ";
 		sAux += "VALOR: " + frm.elements[i].value + "\n" ;
+		return true; //si los datos estan correctos
 		}
-		alert(sAux);
+		alert(sAux);	
 	}
+	return false; //si los datos estan mal
 }
-</script>
-
-<script>
 function verificar(){
 nombre = document.getElementById("nombre").value;
-apellido = document.getElementById("apellido").value;
+apellido = document.getElementById("apellidos").value;
 email = document.getElementById("email").value;
 tlf = document.getElementById("tlf").value;
 pass = document.getElementById("pass").value;
-
  var expReg1=/^$/; //vacio
  var expReg2=/^([0-9]){9}$/; //9 numeros (0-9) 
  var expReg3=/^([a-zA-Z]{1,})(([0-9]){3})@ikasle.ehu.(eus|es)$/;
  var expReg4=/^.{6,}$/; //pass: minimo 6 caracteres
-
-
- 
  if (expReg1.test(nombre)) {
   //Si el nombre es nulo
     alert('[ERROR] Rellena el campo nombre porfavor.');
     return false;
   }
-  else if (expReg1.test(apellido)) {
+  else if (expReg1.test(apellidos)) {
     // Si el apellido es nulo
     alert('[ERROR] Rellena el campo apellido porfavor');
     return false;
   }
     else if (expReg1.test(email)) {
     // Si el email esta vacio
-    alert('[ERROR] Rellena el campo correo  porfavor');
+    alert('[ERROR] Rellena el campo email  porfavor');
     return false;
   }
 	else if (!(expReg3.test(email))) {
     // Si el email no es valido
-    alert('[ERROR] El correo debe tener el formato de la UPV/EHU: Letras + 3 digitos + @ikasle.ehu. + es/eus');
+    alert('[ERROR] El email debe tener el formato de la UPV/EHU: Letras + 3 digitos + @ikasle.ehu. + es/eus');
     return false;
   }
     else if (expReg1.test(pass)) {
     // Si el password esta vacio
-    alert('[ERROR] Rellena el campo contrasena porfavor');
+    alert('[ERROR] Rellena el campo pass porfavor');
     return false;
   }
 	else if (!(expReg4.test(pass))) {
@@ -103,21 +98,21 @@ pass = document.getElementById("pass").value;
     <section class="main" id="s1">
     
 	<div>
-	<form id='registro' name='registro' onSubmit='vervalores()'> <!-- llamamos a vervalores() e vervalores() llama a verificar()-->
+	<form  method='post' id='registro' name='registro' action='registrar.php' onSubmit='return verificar()'>
     <div>
         Nombre:<input type="text" name="nombre" id="nombre" />
     </div>
     <div>
-        Apellido:<input type="text" name="apellidos" id="apellido"/>
+        Apellido:<input type="text" name="apellidos" id="apellidos"/>
     </div>
     <div>
-        Direccion de correo:<input type="text" name="correo" id="email"/>
+        Direccion de correo:<input type="text" name="email" id="email"/>
     </div>
     <div>
-        Contrasena:<input type="password" name="contrasena" id="pass"/>
+        Contrasena:<input type="password" name="pass" id="pass"/>
     </div>
 	<div>
-        Numero de telefono:<input type="text" name="telefono" id="tlf"/>
+        Numero de telefono:<input type="text" name="tlf" id="tlf"/>
     </div>
 	<div>
 		Especialidad:<select name="especialidad">
