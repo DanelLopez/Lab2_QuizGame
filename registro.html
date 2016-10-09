@@ -23,6 +23,10 @@ pass = document.getElementById("pass").value;
  var expReg2=/^([0-9]){9}$/; //9 numeros (0-9) 
  var expReg3=/^([a-zA-Z]{1,})(([0-9]){3})@ikasle.ehu.(eus|es)$/;
  var expReg4=/^.{6,}$/; //pass: minimo 6 caracteres
+<<<<<<< HEAD
+=======
+
+>>>>>>> 949bd0b1e9b573d3be0e1feae0eed41257c24452
  if (expReg1.test(nombre)) {
   //Si el nombre es nulo
     alert('[ERROR] Rellena el campo nombre porfavor.');
@@ -98,7 +102,11 @@ pass = document.getElementById("pass").value;
     <section class="main" id="s1">
     
 	<div>
+<<<<<<< HEAD
 	<form  method='post' id='registro' name='registro' action='registrar.php' onSubmit='return verificar()'>
+=======
+	<form id='registro' name='registro' action='registrar.php' onSubmit='return vervalores()'> <!-- llamamos a vervalores() e vervalores() llama a verificar()-->
+>>>>>>> 949bd0b1e9b573d3be0e1feae0eed41257c24452
     <div>
         Nombre:<input type="text" name="nombre" id="nombre" />
     </div>
