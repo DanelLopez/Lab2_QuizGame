@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
@@ -18,7 +17,7 @@
 	<header class='main' id='h1'>
 		<span class="right"><a href="registro.html">Registrarse</a></span>
       		<span class="right"><a href="login.php">Login</a></span>
-			
+      		<span class="right" style="display:none;"><a href="/logout">Logout</a></span>
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
@@ -29,9 +28,19 @@
     <section class="main" id="s1">
     
 	<div>
-	Aplicacion desarrollada por:<br/>
-	Nombre: Danel Lopez Agoues<br/>
-	Especialidad: Ingenieria de software
+	<?php
+
+	$link = mysqli_connect("localhost","root","","quiz");
+	$preguntas = mysqli_query($link, "select * from pregunta");
+	echo '<table border=1> <th> Pregunta </th> <th> Respuesta </th> <th> Complejidad </th> <th> Autor </tr>';
+	while($row=mysqli_fetch_array($preguntas)){
+		echo '</td><td>'.$row['pregunta'].'</td><td>'.$row['respuesta'].'</td><td>'.$row['complejidad'].'</td><td>'.$row['autor'].'</td>';
+	}
+	echo '</table>';
+	$preguntas->close();
+	mysqli_close($link);
+?>
+
 	</div>
     </section>
 	<footer class='main' id='f1'>

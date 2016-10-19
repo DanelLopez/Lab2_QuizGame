@@ -23,10 +23,7 @@ pass = document.getElementById("pass").value;
  var expReg2=/^([0-9]){9}$/; //9 numeros (0-9) 
  var expReg3=/^([a-zA-Z]{1,})(([0-9]){3})@ikasle.ehu.(eus|es)$/;
  var expReg4=/^.{6,}$/; //pass: minimo 6 caracteres
-<<<<<<< HEAD
-=======
 
->>>>>>> 949bd0b1e9b573d3be0e1feae0eed41257c24452
  if (expReg1.test(nombre)) {
   //Si el nombre es nulo
     alert('[ERROR] Rellena el campo nombre porfavor.');
@@ -91,22 +88,20 @@ pass = document.getElementById("pass").value;
 	<header class='main' id='h1'>
 		<span class="right"><a href="registro.html">Registrarse</a></span>
       		<span class="right"><a href="login">Login</a></span>
-      		<span class="right" style="display:none;"><a href="/logout">Logout</a></span>
+ 
 		<h2>Quiz: el juego de las preguntas</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layout.html'>Inicio</a></spam>
-		<span><a href='quizes'>Preguntas</a></spam>
+		<span><a href='VerPreguntas.php'>Preguntas</a></spam>
 		<span><a href='creditos.html'>Creditos</a></spam>
 	</nav>
     <section class="main" id="s1">
     
 	<div>
-<<<<<<< HEAD
+
 	<form  method='post' id='registro' name='registro' action='registrar.php' onSubmit='return verificar()'>
-=======
-	<form id='registro' name='registro' action='registrar.php' onSubmit='return vervalores()'> <!-- llamamos a vervalores() e vervalores() llama a verificar()-->
->>>>>>> 949bd0b1e9b573d3be0e1feae0eed41257c24452
+
     <div>
         Nombre:<input type="text" name="nombre" id="nombre" />
     </div>
