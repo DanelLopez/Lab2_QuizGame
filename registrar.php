@@ -32,10 +32,10 @@
 	<div>
 	<?php  
 		// Se conecta al SGBD 
-		$iden = mysqli_connect("localhost", "root", "","quiz")or die("Error: No se pudo conectar");
+		$iden = mysqli_connect("mysql.hostinger.es", "u674157267_danel", "H8mu!AvUgmx!","u674157267_quiz")or die("Error: No se pudo conectar");
   
 			//sentencia a ejecutar
-			$sql="INSERT INTO Usuario(nombre, apellidos, correo, contrasena, telefono, especialidad) VALUES ('$_POST[nombre]','$_POST[apellidos]','$_POST[email]','$_POST[pass]','$_POST[tlf]','$_POST[especialidad]')";
+			$sql="INSERT INTO usuario VALUES ('$_POST[Nombre]','$_POST[Apellidos]','$_POST[Password]','$_POST[Correo]','$_POST[Telefono]','$_POST[Especialidad]')";
 				if (!mysqli_query($iden ,$sql))
 					{
 					die('Error: ' . mysqli_error($iden));

@@ -29,37 +29,42 @@
     <section class="main" id="s1">
     
 	<div>
-	<?php
-   $db = mysqli_connect("localhost","root","","quiz");
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
+<?php 
+if (isset($_POST['correo']))
+{
+	$Password=$_POST['pass'];
+	$correo=$_POST['correo'];
+	$usu = mysqli_connect("mysql.hostinger.es", "u674157267_danel", "H8mu!AvUgmx!","u674157267_quiz") or die("Error: No se pudo conectar");
 
-      
-      $myusername = mysqli_real_escape_string($db,$_POST['email']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['pass']); 
-      
-      $sql = "SELECT * FROM usuario WHERE Correo = '$myusername' and Contrasena = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      
-		
-      if($count == 1) {
-         header("location: layoutU.html?email=".$email);
-      }else {
-         echo "datos incorrectos";
-      }
-   }
-?>
-<form action="login.php" method="post">
-<h2>Identificación de usuario </h2>
-<p> Email : <input type="email" required name="email" />
-<p> Password: <input type="password" required name="pass"  />
 
-<p> <input id="submit" type="submit" value="loguearse"/>
-</form> 
-
+ $buscarUsuario = "SELECT * FROM usuario WHERE Correo = '$correo' AND Password='$Password' "; 
+ $result = mysqli_query($usu,$buscarUsuario); 
+ $count = mysqli_num_rows($result); 
+ if($count==0){
+	echo '<script type="text/javascript"> 
+	alert("Usuario/Password incorrectos");
+	</script>';
+	
+ }else{
+	 
+	   session_start();
+        $_SESSION['correo'] = $correo;
+		$_SESSION['logueado']=1;
+		header("Location:gestionPreguntas.php");
+ }
+ mysqli_close($usu);
+}
+ ?>
+<form action="login.php" method="post" id='formulario'>
+<div id='login'> 
+	<p id='titulo'> Login </p>
+	<p id='p1'>Correo:
+	<input type='text' id='correo' name='correo'></p>
+	<p id='p2'>Password: <input type='password' id='Pass'name='pass'></p>
+  
+<p id='p3'><input type='submit' id='boton' value='Loguearse'></p>
+</div>
+</form>
 
 	</div>
     </section>

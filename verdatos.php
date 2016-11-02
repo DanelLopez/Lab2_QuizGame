@@ -29,18 +29,21 @@
     <section class="main" id="s1">
     
 	<div>
-	<?php
-$link= mysqli_connect("localhost", "root", "", "quiz");
-$usuarios = mysqli_query($link, "select * from Usuario" );
-echo '<table border=1> <tr> <th> Nombre </th> <th> APELLIDOS </th> <th> CORREO </th> <th> CONTRASENA </th> <th> TELEFONO </th> <th> ESPECIALIDAD </th>
+<?php 
+
+$usu=mysqli_connect("mysql.hostinger.es", "u674157267_danel", "H8mu!AvUgmx!","u674157267_quiz") or die("Error: No se pudo conectar");
+ $buscarUsuario = "SELECT * FROM usuario"; 
+ $result = mysqli_query($usu,$buscarUsuario); 
+
+echo '<table border=1> <tr> <th> NOMBRE </th> <th> APELLIDOS </th> <th> CORREO </th> <th> CONTRASENA </th> <th> TELEFONO </th> <th> ESPECIALIDAD </th>
 </tr>';
-while ($row = mysqli_fetch_array( $usuarios )) {
-echo '<tr><td>' . $row['Nombre'] . '</td> <td>' . $row['Apellidos'] . '</td> <td>' . $row['Correo'] . '</td> <td>' . $row['Contrasena'] . '</td> <td>' . $row['Telefono'] . '</td>  <td>' . $row['Especialidad'] . '</td>
+while ($row = mysqli_fetch_array( $result )) {
+echo '<tr><td>' . $row['Nombre'] . '</td> <td>' . $row['Apellidos'] . '</td> <td>' . $row['Correo'] . '</td> <td>' . $row['Password'] . '</td> <td>' . $row['Telefono'] . '</td>  <td>' . $row['Especialidad'] . '</td> 
 </tr>';
 }
 echo '</table>';
-$usuarios->close();
-mysqli_close($link);
+$usu->close();
+
 ?>
 	</div>
     </section>

@@ -29,16 +29,21 @@
     
 	<div>
 	<?php
+	$usu=mysqli_connect("mysql.hostinger.es", "u674157267_danel", "H8mu!AvUgmx!","u674157267_quiz");
 
-	$link = mysqli_connect("localhost","root","","quiz");
-	$preguntas = mysqli_query($link, "select * from pregunta");
-	echo '<table border=1> <th> Pregunta </th> <th> Respuesta </th> <th> Complejidad </th> <th> Autor </tr>';
-	while($row=mysqli_fetch_array($preguntas)){
-		echo '</td><td>'.$row['pregunta'].'</td><td>'.$row['respuesta'].'</td><td>'.$row['complejidad'].'</td><td>'.$row['autor'].'</td>';
+	$buscarPregunta = "SELECT * FROM preguntas"; 
+	$result = mysqli_query($usu,$buscarPregunta); 
+	$count = mysqli_num_rows($result); 
+	
+	echo '<table border=1> <tr> <th> Numero </th> <th> Autor </th> <th> Pregunta </th> <th> Respuesta </th> <th> Complejidad </th>
+	</tr>';
+	while ($row = mysqli_fetch_array( $result )) {
+	echo '<tr><td>' . $row['Numero'] . '</td> <td>' . $row['Autor'] . '</td> <td>' . $row['Pregunta'] . '</td> <td>' . $row['Respuesta'] . '</td> <td>' . $row['Complejidad'] . '</td> 
+	</tr>';
 	}
-	echo '</table>';
-	$preguntas->close();
-	mysqli_close($link);
+echo '</table>';
+$usu->close();
+
 ?>
 
 	</div>
